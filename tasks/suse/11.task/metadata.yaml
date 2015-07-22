@@ -1,0 +1,9 @@
+---
+
+os_version: 11
+label: Suse Enterprise Linux Server 11
+description: SLES 11 Generic installer
+boot_sequence:
+  1: boot_install
+  default: boot_local
+base: suse

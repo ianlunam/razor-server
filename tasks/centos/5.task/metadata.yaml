@@ -1,0 +1,5 @@
+---
+
+os_version: 5
+description: CentOS 5 Installer
+base: centos

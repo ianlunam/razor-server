@@ -1,7 +1,14 @@
 <%# -*- shell-script -*- %>
 # Configure hostname.
 hostname <%= node.hostname %>
-echo <%= node.hostname %> > /etc/hostname
+
+# Only SuSE does things different ...
+grep -i suse /etc/issue >/dev/null
+if [ "$?" == "0" ]; then
+  echo <%= node.hostname %> > /etc/HOSTNAME
+else
+  echo <%= node.hostname %> > /etc/hostname
+fi
 
 # This set of commands should convert the first local (but non-loopback) IP
 # address in the /etc/hosts file to an entry that has the fully-qualified

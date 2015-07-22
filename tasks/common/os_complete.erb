@@ -6,7 +6,11 @@ Node: <%= node_url %>
 Install log: /var/log/razor.log
 EOF
 
-sed -i '/razor_postinstall/d' /etc/rc.d/rc.local
+# Not needed for SuSE
+grep -i suse /etc/issue >/dev/null
+if [ "$?" != "0" ]; then
+  sed -i '/razor_postinstall/d' /etc/rc.d/rc.local
+fi
 
 curl -s <%= broker_install_url %> | /bin/bash
 
